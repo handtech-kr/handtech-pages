@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HANDTECH | IoT · AI · Engineering</title>
+  <meta name="description" content="핸텍(HANDTECH) - IoT, AI, 자연과학·공학 융합 엔지니어링 전문 기술 기업"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #060A10;
+      --bg2:       #0B1220;
+      --bg3:       #0F1A2E;
+      --accent:    #00D4FF;
+      --accent2:   #00FF9C;
+      --accent3:   #FF6B35;
+      --text:      #E8F0FF;
+      --muted:     #6B8099;
+      --border:    rgba(0,212,255,0.15);
+      --glow:      rgba(0,212,255,0.25);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── CANVAS GRID ── */
+    body::before {
+      content:'';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(6,10,16,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--text); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.4rem 1.2rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 15vw, 12rem);
+      letter-spacing: 0.08em;
+      line-height: 0.9;
+      color: var(--text);
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-title .ht {
+      color: var(--accent);
+      text-shadow: 0 0 40px var(--glow);
+    }
+
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.75rem, 2vw, 1rem);
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-desc {
+      margin-top: 1.8rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(232,240,255,0.7);
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .btn-primary {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+      box-shadow: 0 0 24px rgba(0,212,255,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #33DDFF;
+      box-shadow: 0 0 40px rgba(0,212,255,0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(0,212,255,0.06);
+      transform: translateY(-2px);
+    }
+
+    /* ── STATS ── */
+    .stats-bar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      overflow: hidden;
+    }
+
+    .stat-item {
+      flex: 1;
+      max-width: 220px;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .stat-item:last-child { border-right: none; }
+    .stat-item:hover { background: rgba(0,212,255,0.04); }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: 0.06em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── CAPABILITIES ── */
+    #capabilities { background: var(--bg2); }
+
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .cap-card {
+      background: var(--bg2);
+      padding: 2.5rem;
+      transition: background 0.25s;
+      cursor: default;
+    }
+
+    .cap-card:hover { background: var(--bg3); }
+
+    .cap-icon {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .cap-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .cap-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .cap-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.2rem;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--accent2);
+      border: 1px solid rgba(0,255,156,0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* ── TECH STACK ── */
+    #techstack { background: var(--bg); }
+
+    .tech-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .tech-group-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tech-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.45rem 1rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .tech-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,212,255,0.05);
+    }
+
+    /* ── PORTFOLIO PREVIEW ── */
+    #portfolio { background: var(--bg2); }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .proj-card {
+      background: var(--bg2);
+      padding: 2rem 2.5rem;
+      transition: background 0.2s;
+    }
+
+    .proj-card:hover { background: var(--bg3); }
+
+    .proj-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--accent3);
+      margin-bottom: 0.8rem;
+    }
+
+    .proj-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .proj-result {
+      font-size: 0.85rem;
+      color: var(--accent2);
+      margin-bottom: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+    }
+
+    .proj-desc {
+      font-size: 0.87rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-left .contact-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-left .contact-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: #33DDFF; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+
+    .footer-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .contact-box { padding: 2.5rem; }
+      footer { padding: 1.5rem; }
+      .stats-bar { flex-wrap: wrap; }
+      .stat-item { min-width: 50%; border-right: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero"><span>HAND</span>TECH</a>
+  <ul class="nav-links">
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#techstack">Tech Stack</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div>
+    <div class="hero-badge">EST. SOUTH KOREA · IOT · AI · ENGINEERING</div>
+    <h1 class="hero-title"><span class="ht">HAND</span>TECH</h1>
+    <p class="hero-sub">IoT &nbsp;·&nbsp; AI &nbsp;·&nbsp; HW/SW &nbsp;·&nbsp; Convergence Engineering</p>
+    <p class="hero-desc">
+      자연과학과 공학의 경계를 넘어,<br>
+      현장의 문제를 기술로 해결합니다.<br>
+      <span style="color:var(--muted); font-size:0.9em;">We solve real-world problems through science-engineering convergence.</span>
+    </p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#portfolio">포트폴리오 보기</a>
+      <a class="btn-outline" href="#contact">프로젝트 문의</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">IoT</div>
+    <div class="stat-label">Products & Systems</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">AI</div>
+    <div class="stat-label">System Development</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">HW·SW</div>
+    <div class="stat-label">End-to-End Dev</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">R&D</div>
+    <div class="stat-label">Convergence Engineering</div>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="container">
+    <div class="section-label reveal">// Core Capabilities</div>
+    <h2 class="section-title reveal">핵심 역량</h2>
+    <p class="section-desc reveal">하드웨어부터 소프트웨어, 서비스까지 — 기술의 전 영역을 아우릅니다.</p>
+    <div class="cap-grid reveal">
+      <div class="cap-card">
+        <div class="cap-icon">🤖</div>
+        <div class="cap-name">AI System</div>
+        <p class="cap-desc">머신러닝·딥러닝 기반 AI 솔루션 설계 및 현장 배포. 엣지 AI부터 클라우드 파이프라인까지 end-to-end 구축.</p>
+        <div class="cap-tags">
+          <span class="tag">Vision AI</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Edge AI</span>
+          <span class="tag">MLOps</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📡</div>
+        <div class="cap-name">IoT Systems</div>
+        <p class="cap-desc">센서 디바이스부터 클라우드 플랫폼까지 연결하는 IoT 시스템 설계 및 구축. 실시간 모니터링·제어 솔루션 전문.</p>
+        <div class="cap-tags">
+          <span class="tag">MQTT</span>
+          <span class="tag">LoRa</span>
+          <span class="tag">AWS IoT</span>
+          <span class="tag">Embedded</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">⚙️</div>
+        <div class="cap-name">HW Development</div>
+        <p class="cap-desc">PCB 설계부터 펌웨어 개발, 양산 검증까지. 특수 환경(고온·진동·방수)에 최적화된 임베디드 하드웨어 개발.</p>
+        <div class="cap-tags">
+          <span class="tag">PCB Design</span>
+          <span class="tag">STM32</span>
+          <span class="tag">FreeRTOS</span>
+          <span class="tag">ARM</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">💻</div>
+        <div class="cap-name">SW Development</div>
+        <p class="cap-desc">임베디드 펌웨어부터 웹 기반 관제 대시보드, 데이터 파이프라인까지. 현장 요구에 맞는 맞춤 소프트웨어 개발.</p>
+        <div class="cap-tags">
+          <span class="tag">Python</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🔭</div>
+        <div class="cap-name">Convergence R&D</div>
+        <p class="cap-desc">자연과학(물리·화학·생물) 도메인 지식과 공학 기술의 융합. 계측 데이터 분석, 신호처리, 과학적 모델링 전문.</p>
+        <div class="cap-tags">
+          <span class="tag">Signal Processing</span>
+          <span class="tag">Measurement</span>
+          <span class="tag">Modeling</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🛠️</div>
+        <div class="cap-name">Service Platform</div>
+        <p class="cap-desc">기술 기반 서비스 기획·설계·운영. 고객 현장에 최적화된 서비스 아키텍처 및 운영 자동화 구현.</p>
+        <div class="cap-tags">
+          <span class="tag">SaaS</span>
+          <span class="tag">Automation</span>
+          <span class="tag">API</span>
+          <span class="tag">Cloud</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="techstack">
+  <div class="container">
+    <div class="section-label reveal">// Technology</div>
+    <h2 class="section-title reveal">기술 스택</h2>
+    <p class="section-desc reveal">현장 검증된 기술로 최적의 솔루션을 구현합니다.</p>
+    <div class="tech-groups reveal">
+      <div>
+        <div class="tech-group-label">AI / Machine Learning</div>
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">TensorFlow</span>
+          <span class="tech-pill">PyTorch</span>
+          <span class="tech-pill">OpenCV</span>
+          <span class="tech-pill">Scikit-learn</span>
+          <span class="tech-pill">YOLO</span>
+          <span class="tech-pill">Transformers</span>
+          <span class="tech-pill">ONNX</span>
+        </div>
+      </div>
+      <div>
+        <div class="tech-group-label">IoT / Embedded</div>
+        <div class="tech-row">
+          <span class="tech-pill">C / C++</span>
+          <span class="tech-pill">FreeRTOS</span>
+          <span class="tech-pill">STM32</span>
+          <span class="tech-pill">Arduino</span>
+          <span class="tech-pill">Raspberry Pi</span>
+          <span class="tech-pill">MQTT</span>
+          <span class="tech-pill">LoRa</span>
+          <span class="tech-pill">Modbus</span>
+        </div>
+      </div>
+      <div>
+        <div class="tech-group-label">Software / Backend</div>
+        <div class="tech-row">
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">PostgreSQL</span>
+          <span class="tech-pill">InfluxDB</span>
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">Kafka</span>
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">Linux</span>
+        </div>
+      </div>
+      <div>
+        <div class="tech-group-label">Cloud / Frontend</div>
+        <div class="tech-row">
+          <span class="tech-pill">AWS IoT Core</span>
+          <span class="tech-pill">AWS Lambda</span>
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Grafana</span>
+          <span class="tech-pill">Nginx</span>
+          <span class="tech-pill">GitHub Actions</span>
+        </div>
+      </div>
+      <div>
+        <div class="tech-group-label">Science / R&D</div>
+        <div class="tech-row">
+          <span class="tech-pill">MATLAB</span>
+          <span class="tech-pill">SciPy</span>
+          <span class="tech-pill">NumPy</span>
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">Signal Processing (DSP)</span>
+          <span class="tech-pill">KiCad</span>
+          <span class="tech-pill">Altium</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-label reveal">// Portfolio</div>
+    <h2 class="section-title reveal">주요 프로젝트</h2>
+    <p class="section-desc reveal">기밀 보호를 위해 프로젝트 개요 및 성과만 공개합니다.</p>
+    <div class="proj-grid reveal">
+      <div class="proj-card">
+        <div class="proj-num">PROJECT · AI-001 · 2023</div>
+        <div class="proj-title">산업용 AI 비전 검사 시스템</div>
+        <div class="proj-result">✦ 불량 검출 정확도 98.7% 달성</div>
+        <p class="proj-desc">제조 현장 실시간 불량 검출 AI 비전 시스템 구축. 커스텀 CNN 모델 설계 및 엣지 디바이스 최적화 배포.</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT · IOT-001 · 2023</div>
+        <div class="proj-title">산업 환경 IoT 모니터링 플랫폼</div>
+        <div class="proj-result">✦ 다중 센서 실시간 수집·관제 구현</div>
+        <p class="proj-desc">온도·습도·진동·가스 등 다중 센서 기반 IoT 플랫폼. MQTT·AWS IoT Core 연동 및 웹 대시보드 구축.</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT · RD-001 · 2024</div>
+        <div class="proj-title">자연과학 계측 데이터 AI 분석</div>
+        <div class="proj-result">✦ 기존 대비 처리 속도 40배 향상</div>
+        <p class="proj-desc">물리·화학 계측 장비 고차원 데이터의 AI 기반 자동 분석. 자연과학 도메인 지식과 ML 엔지니어링의 융합.</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT · HW-001 · 2023</div>
+        <div class="proj-title">특수 환경용 임베디드 보드 설계</div>
+        <div class="proj-result">✦ 양산 적용 완료</div>
+        <p class="proj-desc">고온·진동 환경 동작 커스텀 MCU 보드 설계 및 펌웨어 개발. PCB 설계부터 양산 검증까지 end-to-end 수행.</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT · SW-001 · 2024</div>
+        <div class="proj-title">산업용 실시간 관제 대시보드</div>
+        <div class="proj-result">✦ 이상 감지 자동 알람 시스템 구현</div>
+        <p class="proj-desc">IoT 센서 및 설비 데이터 실시간 시각화 웹 관제 시스템. SMS/Email 알람 자동화 및 이력 분석 기능 포함.</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT · SVC-001 · 2024</div>
+        <div class="proj-title">데이터 수집·처리 파이프라인</div>
+        <div class="proj-result">✦ 일 1억 건 이상 안정 처리</div>
+        <p class="proj-desc">대규모 데이터 수집·처리·저장 파이프라인 설계 및 구축. Kafka 기반 스트리밍 처리 및 자동화 운영.</p>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem; text-align:center;">
+      <a class="btn-outline" href="https://github.com/handtech-kr/handtech-portfolio" target="_blank">전체 포트폴리오 보기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label reveal">// Contact</div>
+    <h2 class="section-title reveal">프로젝트 문의</h2>
+    <div class="contact-box reveal">
+      <div class="contact-left">
+        <div class="contact-title">LET'S BUILD<br>TOGETHER</div>
+        <p class="contact-sub">
+          IoT·AI 시스템 구축, 기술 협력, R&D 프로젝트 등<br>
+          모든 문의를 환영합니다.
+        </p>
+      </div>
+      <div class="contact-right">
+        <a class="contact-link" href="https://www.handtech.co.kr" target="_blank">
+          🌐 www.handtech.co.kr
+        </a>
+        <a class="contact-link" href="https://github.com/handtech-kr" target="_blank">
+          🐙 github.com/handtech-kr
+        </a>
+        <a class="contact-link" href="#">
+          📍 Republic of Korea
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">HANDTECH</div>
+  <div class="footer-copy">© 2025 HANDTECH. All rights reserved. · www.handtech.co.kr</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.borderBottomColor = window.scrollY > 50
+      ? 'rgba(0,212,255,0.2)' : 'rgba(0,212,255,0.15)';
+  });
+</script>
+</body>
+</html>
