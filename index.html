@@ -126,19 +126,20 @@
     .hero-catchphrase {
       font-family: 'Noto Sans KR', sans-serif;
       font-weight: 300;
-      font-size: clamp(1rem, 3vw, 1.6rem);
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
       letter-spacing: 0.45em;
       color: var(--accent2);
-      margin-bottom: 0.6rem;
+      margin-bottom: 1.2rem;
       animation: fadeUp 0.8s 0.05s ease both;
     }
 
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 15vw, 12rem);
+      font-size: clamp(2.8rem, 8vw, 7rem);
       letter-spacing: 0.08em;
       line-height: 0.9;
       color: var(--text);
+      white-space: nowrap;
       animation: fadeUp 0.8s 0.1s ease both;
     }
 
@@ -565,7 +566,7 @@
   <div>
     <div class="hero-badge">EST. SOUTH KOREA · HW · FW · APP · MECHANICAL</div>
     <div class="hero-catchphrase">상상공작소</div>
-    <h1 class="hero-title"><span class="ht">핸텍</span><br><span style="font-size:0.55em; letter-spacing:0.12em;">(HANDTECH)</span></h1>
+    <h1 class="hero-title"><span class="ht">핸텍</span><span> (HANDTECH)</span></h1>
     <p class="hero-sub">Hardware &nbsp;·&nbsp; Firmware &nbsp;·&nbsp; App &nbsp;·&nbsp; Mechanical Design</p>
     <p class="hero-desc">
       하드웨어 설계부터 펌웨어, 앱, 기구 설계까지<br>
@@ -814,8 +815,8 @@
         <a class="contact-link" href="https://github.com/handtech-kr" target="_blank">
           🐙 github.com/handtech-kr
         </a>
-        <a class="contact-link" href="mailto:master@handtech.co.kr">
-          ✉️ master@handtech.co.kr
+        <a class="contact-link" href="/cdn-cgi/l/email-protection#90fdf1e3e4f5e2d0f8f1fef4e4f5f3f8bef3ffbefbe2">
+          ✉️ <span class="__cf_email__" data-cfemail="127f7361667760527a737c766677717a3c717d3c7960">[email&#160;protected]</span>
         </a>
         <a class="contact-link" href="#">
           📞 031-433-3843
@@ -831,28 +832,14 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">핸텍(HANDTECH)</div>
-  <div class="footer-copy">© 2026 핸텍(HANDTECH) 대표: 노진문 · 경기도 시흥시 봉우순환로3번길 12-1 · 031-433-3843 · master@handtech.co.kr</div>
+  <div class="footer-copy">© 2026 핸텍(HANDTECH) 대표: 노진문 · 경기도 시흥시 봉우순환로3번길 12-1 · 031-433-3843 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c717d6f68796e5c747d727868797f74327f7332776e">[email&#160;protected]</a></div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
         setTimeout(() => e.target.classList.add('visible'), i * 80);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-
-  // Nav active
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.borderBottomColor = window.scrollY > 50
-      ? 'rgba(0,212,255,0.2)' : 'rgba(0,212,255,0.15)';
-  });
-</script>
-</body>
-</html>
+      
