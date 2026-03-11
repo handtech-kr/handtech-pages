@@ -123,6 +123,16 @@
       animation: fadeUp 0.8s ease both;
     }
 
+    .hero-catchphrase {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 3vw, 1.6rem);
+      letter-spacing: 0.45em;
+      color: var(--accent2);
+      margin-bottom: 0.6rem;
+      animation: fadeUp 0.8s 0.05s ease both;
+    }
+
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(5rem, 15vw, 12rem);
@@ -540,7 +550,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#hero"><span>HAND</span>TECH</a>
+  <a class="nav-logo" href="#hero"><span>핸텍</span>(HANDTECH)</a>
   <ul class="nav-links">
     <li><a href="#capabilities">Capabilities</a></li>
     <li><a href="#techstack">Tech Stack</a></li>
@@ -553,13 +563,14 @@
 <section id="hero">
   <div class="hero-glow"></div>
   <div>
-    <div class="hero-badge">EST. SOUTH KOREA · IOT · AI · ENGINEERING</div>
-    <h1 class="hero-title"><span class="ht">HAND</span>TECH</h1>
-    <p class="hero-sub">IoT &nbsp;·&nbsp; AI &nbsp;·&nbsp; HW/SW &nbsp;·&nbsp; Convergence Engineering</p>
+    <div class="hero-badge">EST. SOUTH KOREA · HW · FW · APP · MECHANICAL</div>
+    <div class="hero-catchphrase">상상공작소</div>
+    <h1 class="hero-title"><span class="ht">핸텍</span><br><span style="font-size:0.55em; letter-spacing:0.12em;">(HANDTECH)</span></h1>
+    <p class="hero-sub">Hardware &nbsp;·&nbsp; Firmware &nbsp;·&nbsp; App &nbsp;·&nbsp; Mechanical Design</p>
     <p class="hero-desc">
-      자연과학과 공학의 경계를 넘어,<br>
-      현장의 문제를 기술로 해결합니다.<br>
-      <span style="color:var(--muted); font-size:0.9em;">We solve real-world problems through science-engineering convergence.</span>
+      하드웨어 설계부터 펌웨어, 앱, 기구 설계까지<br>
+      제품 개발의 전 과정을 한 곳에서.<br>
+      <span style="color:var(--muted); font-size:0.9em;">Full-cycle product engineering — from PCB to enclosure.</span>
     </p>
     <div class="hero-cta">
       <a class="btn-primary" href="#portfolio">포트폴리오 보기</a>
@@ -571,20 +582,20 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item">
-    <div class="stat-num">IoT</div>
-    <div class="stat-label">Products & Systems</div>
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Years of Experience</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">AI</div>
-    <div class="stat-label">System Development</div>
+    <div class="stat-num">50+</div>
+    <div class="stat-label">Projects</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">HW·SW</div>
-    <div class="stat-label">End-to-End Dev</div>
+    <div class="stat-num">HW·FW</div>
+    <div class="stat-label">PCB & Firmware Dev</div>
   </div>
-  <div class="stat-item">
-    <div class="stat-num">R&D</div>
-    <div class="stat-label">Convergence Engineering</div>
+  <div class="stat-item" style="border-color:rgba(0,255,156,0.3); background:rgba(0,255,156,0.04);">
+    <div class="stat-num" style="color:var(--accent2);">AI</div>
+    <div class="stat-label" style="color:var(--accent2);">Industry Specialist</div>
   </div>
 </div>
 
@@ -593,71 +604,72 @@
   <div class="container">
     <div class="section-label reveal">// Core Capabilities</div>
     <h2 class="section-title reveal">핵심 역량</h2>
-    <p class="section-desc reveal">하드웨어부터 소프트웨어, 서비스까지 — 기술의 전 영역을 아우릅니다.</p>
+    <p class="section-desc reveal">산업 현장 AI를 선두로 — PCB·펌웨어·기구 설계까지 제품 개발의 전 과정을 수행합니다.</p>
     <div class="cap-grid reveal">
-      <div class="cap-card">
+      <div class="cap-card" style="border-left: 3px solid var(--accent2); background: linear-gradient(135deg, rgba(0,255,156,0.06) 0%, var(--bg2) 60%);">
         <div class="cap-icon">🤖</div>
-        <div class="cap-name">AI System</div>
-        <p class="cap-desc">머신러닝·딥러닝 기반 AI 솔루션 설계 및 현장 배포. 엣지 AI부터 클라우드 파이프라인까지 end-to-end 구축.</p>
+        <div class="cap-name" style="color:var(--accent2);">AI System <span style="font-family:'JetBrains Mono',monospace; font-size:0.55rem; color:var(--accent2); border:1px solid rgba(0,255,156,0.4); padding:0.15rem 0.5rem; border-radius:2px; vertical-align:middle; letter-spacing:0.15em;">MAIN</span></div>
+        <p class="cap-desc">제조·모빌리티·물류 등 산업 현장 특화 AI 시스템 설계 및 구축. 하드웨어 기반 위에 엣지 AI를 얹는 end-to-end 솔루션 제공.</p>
         <div class="cap-tags">
-          <span class="tag">Vision AI</span>
-          <span class="tag">NLP</span>
-          <span class="tag">Edge AI</span>
-          <span class="tag">MLOps</span>
-        </div>
-      </div>
-      <div class="cap-card">
-        <div class="cap-icon">📡</div>
-        <div class="cap-name">IoT Systems</div>
-        <p class="cap-desc">센서 디바이스부터 클라우드 플랫폼까지 연결하는 IoT 시스템 설계 및 구축. 실시간 모니터링·제어 솔루션 전문.</p>
-        <div class="cap-tags">
-          <span class="tag">MQTT</span>
-          <span class="tag">LoRa</span>
-          <span class="tag">AWS IoT</span>
-          <span class="tag">Embedded</span>
+          <span class="tag" style="border-color:rgba(0,255,156,0.4); color:var(--accent2);">Edge AI</span>
+          <span class="tag" style="border-color:rgba(0,255,156,0.4); color:var(--accent2);">Vision AI</span>
+          <span class="tag" style="border-color:rgba(0,255,156,0.4); color:var(--accent2);">산업 현장 특화</span>
+          <span class="tag" style="border-color:rgba(0,255,156,0.4); color:var(--accent2);">HW+AI 융합</span>
         </div>
       </div>
       <div class="cap-card">
         <div class="cap-icon">⚙️</div>
-        <div class="cap-name">HW Development</div>
-        <p class="cap-desc">PCB 설계부터 펌웨어 개발, 양산 검증까지. 특수 환경(고온·진동·방수)에 최적화된 임베디드 하드웨어 개발.</p>
+        <div class="cap-name">PCB / HW Design</div>
+        <p class="cap-desc">전원 회로, 모터 드라이버, 인터페이스 보드, 충전 회로, 오디오 앰프 등 다양한 용도의 PCB 설계 및 양산 지원.</p>
         <div class="cap-tags">
           <span class="tag">PCB Design</span>
+          <span class="tag">Altium</span>
+          <span class="tag">KiCad</span>
+          <span class="tag">Gerber</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🔧</div>
+        <div class="cap-name">Firmware Dev</div>
+        <p class="cap-desc">MCU 기반 펌웨어 개발. UWB·BLE 무선통신, 센서 인터페이스, 모터 제어 등 다양한 임베디드 시스템 구현.</p>
+        <div class="cap-tags">
+          <span class="tag">C / C++</span>
+          <span class="tag">PIC</span>
           <span class="tag">STM32</span>
-          <span class="tag">FreeRTOS</span>
-          <span class="tag">ARM</span>
+          <span class="tag">UWB / BLE</span>
         </div>
       </div>
       <div class="cap-card">
-        <div class="cap-icon">💻</div>
-        <div class="cap-name">SW Development</div>
-        <p class="cap-desc">임베디드 펌웨어부터 웹 기반 관제 대시보드, 데이터 파이프라인까지. 현장 요구에 맞는 맞춤 소프트웨어 개발.</p>
+        <div class="cap-icon">📐</div>
+        <div class="cap-name">Mechanical Design</div>
+        <p class="cap-desc">3D CAD 기반 기구 설계 및 외장 개발. 3D 프린팅 출력, CNC 가공, 구동부 설계 및 조립 검증까지 수행.</p>
         <div class="cap-tags">
-          <span class="tag">Python</span>
-          <span class="tag">React</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">Docker</span>
+          <span class="tag">Fusion 360</span>
+          <span class="tag">FreeCad</span>
+          <span class="tag">DXF / DWG</span>
+          <span class="tag">3D Printing</span>
         </div>
       </div>
       <div class="cap-card">
-        <div class="cap-icon">🔭</div>
-        <div class="cap-name">Convergence R&D</div>
-        <p class="cap-desc">자연과학(물리·화학·생물) 도메인 지식과 공학 기술의 융합. 계측 데이터 분석, 신호처리, 과학적 모델링 전문.</p>
+        <div class="cap-icon">📱</div>
+        <div class="cap-name">App / SW Dev</div>
+        <p class="cap-desc">Android 앱(Flutter / Android Studio) 및 IoT 원격 모니터링 SW 개발. AI 번역 앱 등 자체 앱 Google Play 배포 경험.</p>
         <div class="cap-tags">
-          <span class="tag">Signal Processing</span>
-          <span class="tag">Measurement</span>
-          <span class="tag">Modeling</span>
+          <span class="tag">Flutter</span>
+          <span class="tag">Android</span>
+          <span class="tag">Google Play</span>
+          <span class="tag">IoT SW</span>
         </div>
       </div>
       <div class="cap-card">
-        <div class="cap-icon">🛠️</div>
-        <div class="cap-name">Service Platform</div>
-        <p class="cap-desc">기술 기반 서비스 기획·설계·운영. 고객 현장에 최적화된 서비스 아키텍처 및 운영 자동화 구현.</p>
+        <div class="cap-icon">🥽</div>
+        <div class="cap-name">XR / Wearable</div>
+        <p class="cap-desc">XR 글로브, UWB 위치추적(iSafety), 홀로렌즈 클립, 엑소스켈레톤 등 웨어러블 및 XR 디바이스 개발 전문.</p>
         <div class="cap-tags">
-          <span class="tag">SaaS</span>
-          <span class="tag">Automation</span>
-          <span class="tag">API</span>
-          <span class="tag">Cloud</span>
+          <span class="tag">XR Glove</span>
+          <span class="tag">UWB</span>
+          <span class="tag">HoloLens</span>
+          <span class="tag">Exoskeleton</span>
         </div>
       </div>
     </div>
@@ -672,65 +684,60 @@
     <p class="section-desc reveal">현장 검증된 기술로 최적의 솔루션을 구현합니다.</p>
     <div class="tech-groups reveal">
       <div>
-        <div class="tech-group-label">AI / Machine Learning</div>
+        <div class="tech-group-label">PCB / Hardware</div>
         <div class="tech-row">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">TensorFlow</span>
-          <span class="tech-pill">PyTorch</span>
-          <span class="tech-pill">OpenCV</span>
-          <span class="tech-pill">Scikit-learn</span>
-          <span class="tech-pill">YOLO</span>
-          <span class="tech-pill">Transformers</span>
-          <span class="tech-pill">ONNX</span>
+          <span class="tech-pill">Altium Designer</span>
+          <span class="tech-pill">KiCad</span>
+          <span class="tech-pill">Gerber</span>
+          <span class="tech-pill">전원 회로</span>
+          <span class="tech-pill">모터 드라이버</span>
+          <span class="tech-pill">오디오 앰프</span>
+          <span class="tech-pill">충전 회로 (LTC7891 등)</span>
         </div>
       </div>
       <div>
-        <div class="tech-group-label">IoT / Embedded</div>
+        <div class="tech-group-label">Firmware / Embedded</div>
         <div class="tech-row">
           <span class="tech-pill">C / C++</span>
-          <span class="tech-pill">FreeRTOS</span>
+          <span class="tech-pill">PIC MCU</span>
           <span class="tech-pill">STM32</span>
-          <span class="tech-pill">Arduino</span>
+          <span class="tech-pill">nRF5 SDK</span>
+          <span class="tech-pill">UWB (DWM1001C)</span>
+          <span class="tech-pill">BLE</span>
           <span class="tech-pill">Raspberry Pi</span>
-          <span class="tech-pill">MQTT</span>
-          <span class="tech-pill">LoRa</span>
-          <span class="tech-pill">Modbus</span>
+          <span class="tech-pill">Jetson TX2</span>
         </div>
       </div>
       <div>
-        <div class="tech-group-label">Software / Backend</div>
+        <div class="tech-group-label">Mechanical / CAD</div>
         <div class="tech-row">
-          <span class="tech-pill">Node.js</span>
-          <span class="tech-pill">FastAPI</span>
-          <span class="tech-pill">PostgreSQL</span>
-          <span class="tech-pill">InfluxDB</span>
-          <span class="tech-pill">MongoDB</span>
-          <span class="tech-pill">Kafka</span>
-          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">Fusion 360</span>
+          <span class="tech-pill">FreeCad</span>
+          <span class="tech-pill">AutoCAD (DXF/DWG)</span>
+          <span class="tech-pill">3D Printing</span>
+          <span class="tech-pill">CNC Milling</span>
+          <span class="tech-pill">SolidWorks</span>
+        </div>
+      </div>
+      <div>
+        <div class="tech-group-label">App / Software</div>
+        <div class="tech-row">
+          <span class="tech-pill">Flutter</span>
+          <span class="tech-pill">Android Studio</span>
+          <span class="tech-pill">Google Play</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">IoT Monitoring SW</span>
           <span class="tech-pill">Linux</span>
         </div>
       </div>
       <div>
-        <div class="tech-group-label">Cloud / Frontend</div>
+        <div class="tech-group-label">Platform / SBC</div>
         <div class="tech-row">
-          <span class="tech-pill">AWS IoT Core</span>
-          <span class="tech-pill">AWS Lambda</span>
-          <span class="tech-pill">React</span>
-          <span class="tech-pill">Grafana</span>
-          <span class="tech-pill">Nginx</span>
-          <span class="tech-pill">GitHub Actions</span>
-        </div>
-      </div>
-      <div>
-        <div class="tech-group-label">Science / R&D</div>
-        <div class="tech-row">
-          <span class="tech-pill">MATLAB</span>
-          <span class="tech-pill">SciPy</span>
-          <span class="tech-pill">NumPy</span>
-          <span class="tech-pill">Pandas</span>
-          <span class="tech-pill">Signal Processing (DSP)</span>
-          <span class="tech-pill">KiCad</span>
-          <span class="tech-pill">Altium</span>
+          <span class="tech-pill">LattePanda 3 Delta</span>
+          <span class="tech-pill">Raspberry Pi 4B / CM4</span>
+          <span class="tech-pill">Jetson TX2</span>
+          <span class="tech-pill">RK3399PRO</span>
+          <span class="tech-pill">NanoPi NEO Air</span>
         </div>
       </div>
     </div>
@@ -745,40 +752,40 @@
     <p class="section-desc reveal">기밀 보호를 위해 프로젝트 개요 및 성과만 공개합니다.</p>
     <div class="proj-grid reveal">
       <div class="proj-card">
-        <div class="proj-num">PROJECT · AI-001 · 2023</div>
-        <div class="proj-title">산업용 AI 비전 검사 시스템</div>
-        <div class="proj-result">✦ 불량 검출 정확도 98.7% 달성</div>
-        <p class="proj-desc">제조 현장 실시간 불량 검출 AI 비전 시스템 구축. 커스텀 CNN 모델 설계 및 엣지 디바이스 최적화 배포.</p>
+        <div class="proj-num">PROJECT · HW-001 · 2019~2025</div>
+        <div class="proj-title">버스 탑재 IoT 시스템 PCB 개발</div>
+        <div class="proj-result">✦ IFBOX·앰프·충전기 등 10종 이상 양산</div>
+        <p class="proj-desc">버스 차량용 인터페이스 박스, 오디오 앰프(HAMP 시리즈), 배터리 충전기, 전력 보호 PCB 등 다수 차량 탑재 보드 설계 및 납품. (협력: 한국플랫폼서비스)</p>
       </div>
       <div class="proj-card">
-        <div class="proj-num">PROJECT · IOT-001 · 2023</div>
-        <div class="proj-title">산업 환경 IoT 모니터링 플랫폼</div>
-        <div class="proj-result">✦ 다중 센서 실시간 수집·관제 구현</div>
-        <p class="proj-desc">온도·습도·진동·가스 등 다중 센서 기반 IoT 플랫폼. MQTT·AWS IoT Core 연동 및 웹 대시보드 구축.</p>
+        <div class="proj-num">PROJECT · XR-001 · 2020~2023</div>
+        <div class="proj-title">XR 햅틱 글로브</div>
+        <div class="proj-result">✦ 5차례 버전 반복 개발 및 납품</div>
+        <p class="proj-desc">XR 환경용 햅틱 글로브 개발. Flex Sensor·Force Control·촉각 피드백·배터리 팩 포함. 3D 출력, PCB, 펌웨어 일괄 개발. (협력: (주)메타뷰)</p>
       </div>
       <div class="proj-card">
-        <div class="proj-num">PROJECT · RD-001 · 2024</div>
-        <div class="proj-title">자연과학 계측 데이터 AI 분석</div>
-        <div class="proj-result">✦ 기존 대비 처리 속도 40배 향상</div>
-        <p class="proj-desc">물리·화학 계측 장비 고차원 데이터의 AI 기반 자동 분석. 자연과학 도메인 지식과 ML 엔지니어링의 융합.</p>
+        <div class="proj-num">PROJECT · IOT-001 · 2021~2024</div>
+        <div class="proj-title">UWB 실내 위치추적 시스템 (iSafety)</div>
+        <div class="proj-result">✦ Tag·AP 전 하드웨어 자체 개발</div>
+        <p class="proj-desc">DWM1001C·QN9090 기반 UWB 태그 및 AP 설계. 단채널·이중채널 태그, 충전 내장 태그 포함. PCB·펌웨어·케이스 일괄 개발. (협력: (주)메타뷰)</p>
       </div>
       <div class="proj-card">
-        <div class="proj-num">PROJECT · HW-001 · 2023</div>
-        <div class="proj-title">특수 환경용 임베디드 보드 설계</div>
-        <div class="proj-result">✦ 양산 적용 완료</div>
-        <p class="proj-desc">고온·진동 환경 동작 커스텀 MCU 보드 설계 및 펌웨어 개발. PCB 설계부터 양산 검증까지 end-to-end 수행.</p>
+        <div class="proj-num">PROJECT · CNC-001 · 2015~2018</div>
+        <div class="proj-title">5축 CNC 머시닝센터 — KD-H53AT</div>
+        <div class="proj-result">✦ 기계·전장 설계 완납</div>
+        <p class="proj-desc">5축 CNC 머시닝센터 기계 설계 및 전장 설계 전담. ATC, 로타리테이블, 스핀들 하우징, 자바라 등 주요 구성요소 포함. 2D/3D 도면·BOM 일괄 납품.</p>
       </div>
       <div class="proj-card">
-        <div class="proj-num">PROJECT · SW-001 · 2024</div>
-        <div class="proj-title">산업용 실시간 관제 대시보드</div>
-        <div class="proj-result">✦ 이상 감지 자동 알람 시스템 구현</div>
-        <p class="proj-desc">IoT 센서 및 설비 데이터 실시간 시각화 웹 관제 시스템. SMS/Email 알람 자동화 및 이력 분석 기능 포함.</p>
+        <div class="proj-num">PROJECT · MOB-001 · 2022~2025</div>
+        <div class="proj-title">전동 고카트</div>
+        <div class="proj-result">✦ 전장·기구·구동부 일괄 개발</div>
+        <p class="proj-desc">전동 구동 고카트 풀 설계. 스티어링 시스템, 구동부 외장 설계, 전장 레이아웃 구성. Fusion 360 기반 3D 설계 및 버전 관리.</p>
       </div>
       <div class="proj-card">
-        <div class="proj-num">PROJECT · SVC-001 · 2024</div>
-        <div class="proj-title">데이터 수집·처리 파이프라인</div>
-        <div class="proj-result">✦ 일 1억 건 이상 안정 처리</div>
-        <p class="proj-desc">대규모 데이터 수집·처리·저장 파이프라인 설계 및 구축. Kafka 기반 스트리밍 처리 및 자동화 운영.</p>
+        <div class="proj-num">PROJECT · APP-001 · 2026</div>
+        <div class="proj-title">AI 번역 앱 (영어↔스페인어)</div>
+        <div class="proj-result">✦ Google Play 배포 완료</div>
+        <p class="proj-desc">Flutter 기반 Android AI 번역 앱 개발. Android Studio 활용, Google Play Console을 통한 배포 및 운영.</p>
       </div>
     </div>
     <div style="margin-top:1.5rem; text-align:center;">
@@ -796,8 +803,8 @@
       <div class="contact-left">
         <div class="contact-title">LET'S BUILD<br>TOGETHER</div>
         <p class="contact-sub">
-          IoT·AI 시스템 구축, 기술 협력, R&D 프로젝트 등<br>
-          모든 문의를 환영합니다.
+          하드웨어·펌웨어·앱·기구 설계 의뢰,<br>
+          기술 협력 및 공동 개발 문의를 환영합니다.
         </p>
       </div>
       <div class="contact-right">
@@ -807,8 +814,14 @@
         <a class="contact-link" href="https://github.com/handtech-kr" target="_blank">
           🐙 github.com/handtech-kr
         </a>
+        <a class="contact-link" href="mailto:master@handtech.co.kr">
+          ✉️ master@handtech.co.kr
+        </a>
         <a class="contact-link" href="#">
-          📍 Republic of Korea
+          📞 031-433-3843
+        </a>
+        <a class="contact-link" href="#">
+          📍 경기도 시흥시 봉우순환로3번길 12-1
         </a>
       </div>
     </div>
@@ -817,8 +830,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">HANDTECH</div>
-  <div class="footer-copy">© 2025 HANDTECH. All rights reserved. · www.handtech.co.kr</div>
+  <div class="footer-logo">핸텍(HANDTECH)</div>
+  <div class="footer-copy">© 2026 핸텍(HANDTECH) 대표: 노진문 · 경기도 시흥시 봉우순환로3번길 12-1 · 031-433-3843 · master@handtech.co.kr</div>
 </footer>
 
 <script>
